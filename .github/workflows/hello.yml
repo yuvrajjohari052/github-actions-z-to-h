@@ -1,6 +1,6 @@
 #create workflow
 name: Hello Workflow
-# Triggering for run
+# when to trigger for run 
 on:
   push:
     branches: [main]
