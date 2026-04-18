@@ -6,24 +6,28 @@ on:
 
 jobs:
   code:
+   
     runs-on: ubuntu-latest
     steps:
      - name: checkout code
        run: echo "code clone from github"
   
   build:
+    needs: code
     runs-on: ubuntu-latest
     steps:
       - name: docker container
         run: echo "docker container built."
   
   test:
+    needs: [build , code ]
     runs-on: ubuntu-latest
     steps:
       - name: twst on docker ps
         run: echo "code pass the test"
     
   deploy:
+    needs: [code,build,test]
     runs-on: ubuntu-latest
     steps:
       - name: deploy
