@@ -14,3 +14,9 @@ jobs:
         run: echo "hello"
       - name: say hello to user
         run: echo "hello $USER"
+
+  Details:
+    runs-on: ubuntu-latest
+    steps:
+      - name: give version of python and docker
+        run: docker --version && python --version
