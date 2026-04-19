@@ -8,6 +8,7 @@ on:
 permissions:
       pages: write      
       id-token: write 
+      contents: read
         
 jobs:
     deploy:
@@ -31,7 +32,7 @@ jobs:
               uses: actions/upload-pages-artifact@v4
               with:
                 path: "."
-                
+
 
             
             #step4:make page live
