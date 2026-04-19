@@ -1,1 +1,141 @@
-<h1>hello</h1>
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Mercer — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { --bg: #f8f5f0; --ink: #111; --red: #c8432a; --muted: #888; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Inter', sans-serif; font-weight: 300; }
+
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; border-bottom: 1px solid #e0dbd2; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav a { text-decoration: none; color: var(--muted); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color .2s; }
+  nav a:hover { color: var(--red); }
+
+  .hero { padding: 5rem 3rem 4rem; border-bottom: 1px solid #e0dbd2; }
+  .hero-tag { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); margin-bottom: 1.2rem; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1; margin-bottom: 1.5rem; }
+  .hero h1 em { font-style: italic; color: var(--red); }
+  .hero p { font-size: 1rem; line-height: 1.8; color: var(--muted); max-width: 45ch; margin-bottom: 2rem; }
+  .btn { display: inline-block; padding: 0.75rem 2rem; background: var(--ink); color: var(--bg); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background .2s; }
+  .btn:hover { background: var(--red); }
+
+  .about { display: grid; grid-template-columns: 1fr 2fr; border-bottom: 1px solid #e0dbd2; }
+  .about-left { padding: 3rem; border-right: 1px solid #e0dbd2; }
+  .about-left h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; }
+  .about-left h2 em { font-style: italic; color: var(--red); }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+  .stat-n { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; }
+  .stat-l { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; }
+  .about-right { padding: 3rem; }
+  .about-right p { font-size: 0.95rem; line-height: 1.9; color: var(--muted); margin-bottom: 1rem; }
+  .about-right p strong { color: var(--ink); font-weight: 500; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+  .tag { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid #ccc; padding: 0.3rem 0.75rem; color: var(--muted); transition: all .2s; cursor: default; }
+  .tag:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+  .work { padding: 3rem; border-bottom: 1px solid #e0dbd2; }
+  .sec-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 2rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .card { padding: 2.5rem 2rem; position: relative; overflow: hidden; min-height: 180px; display: flex; flex-direction: column; justify-content: flex-end; transition: transform .3s; }
+  .card:hover { transform: translateY(-4px); }
+  .card::before { content: ''; position: absolute; width: 140px; height: 140px; border-radius: 50%; background: rgba(255,255,255,0.05); top: -35px; right: -35px; transition: transform .4s; }
+  .card:hover::before { transform: scale(1.4); }
+  .card-num { position: absolute; top: 1.5rem; left: 2rem; font-size: 0.65rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.25); }
+  .card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff; margin-bottom: 0.4rem; }
+  .card p { font-size: 0.72rem; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; }
+  .c1 { background: #1a3a5c; } .c2 { background: #3a1a0e; } .c3 { background: #1a2d1a; } .c4 { background: #2d1a3a; }
+
+  .contact { padding: 5rem 3rem; text-align: center; }
+  .contact h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 5rem); line-height: 1; margin-bottom: 1rem; }
+  .contact h2 em { font-style: italic; color: var(--red); }
+  .contact p { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+  .email { font-size: 1rem; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--red); padding-bottom: 2px; transition: color .2s; }
+  .email:hover { color: var(--red); }
+  .socials { display: flex; justify-content: center; gap: 2rem; margin-top: 3rem; }
+  .socials a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .2s; }
+  .socials a:hover { color: var(--ink); }
+
+  footer { background: var(--ink); color: rgba(255,255,255,0.3); padding: 1.5rem 3rem; display: flex; justify-content: space-between; font-size: 0.7rem; letter-spacing: 0.08em; }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.5rem; } nav ul { display: none; }
+    .hero, .work, .contact { padding: 3rem 1.5rem; }
+    .about { grid-template-columns: 1fr; }
+    .about-left { padding: 2rem 1.5rem; border-right: none; border-bottom: 1px solid #e0dbd2; }
+    .about-right { padding: 2rem 1.5rem; }
+    footer { padding: 1rem 1.5rem; flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">A.Mercer</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">Available for work — 2026</div>
+  <h1>Alex<br><em>Mercer</em></h1>
+  <p>Creative developer & designer. I build beautiful digital experiences at the intersection of design and engineering.</p>
+  <a href="#work" class="btn">View Work →</a>
+</section>
+
+<section class="about" id="about">
+  <div class="about-left">
+    <h2>Craft<br>meets<br><em>code</em></h2>
+    <div class="stats">
+      <div><div class="stat-n">7+</div><div class="stat-l">Years exp.</div></div>
+      <div><div class="stat-n">42</div><div class="stat-l">Projects</div></div>
+      <div><div class="stat-n">18</div><div class="stat-l">Clients</div></div>
+      <div><div class="stat-n">3</div><div class="stat-l">Awards</div></div>
+    </div>
+  </div>
+  <div class="about-right">
+    <p>I'm a <strong>creative developer</strong> with obsessive attention to detail. My work blends engineering with genuine design sensibility.</p>
+    <p>Based in <strong>Mumbai</strong>. Open to global remote work and select on-site collaborations.</p>
+    <div class="tags">
+      <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Figma</span>
+      <span class="tag">Three.js</span><span class="tag">GSAP</span><span class="tag">Next.js</span>
+      <span class="tag">Node.js</span><span class="tag">WebGL</span><span class="tag">CSS</span>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="sec-label">Selected Projects</div>
+  <div class="cards">
+    <div class="card c1"><div class="card-num">01</div><h3>Horizon Finance</h3><p>React · D3.js · 2025</p></div>
+    <div class="card c2"><div class="card-num">02</div><h3>Terra Branding</h3><p>Figma · Framer · 2025</p></div>
+    <div class="card c3"><div class="card-num">03</div><h3>Verdant System</h3><p>Storybook · Tokens · 2024</p></div>
+    <div class="card c4"><div class="card-num">04</div><h3>Lumen Art</h3><p>Three.js · GLSL · 2024</p></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Let's build<br>something <em>great</em></h2>
+  <p>Have a project in mind? I'd love to hear from you.</p>
+  <a href="mailto:hello@alexmercer.dev" class="email">hello@alexmercer.dev</a>
+  <div class="socials">
+    <a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">Dribbble</a><a href="#">Twitter</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Alex Mercer</span>
+  <a href="#" style="color:rgba(255,255,255,0.3);text-decoration:none;">Back to top ↑</a>
+</footer>
+
+</body>
+</html>
+```
